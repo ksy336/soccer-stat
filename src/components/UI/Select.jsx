@@ -5,7 +5,7 @@ const Select = ({options, defaultValue, value, onChange}) => {
         <div>
             <select
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={event => onChange(event.target.value)}
             >
                 <option disabled value="">{defaultValue}</option>
                 {options.map((option) =>
