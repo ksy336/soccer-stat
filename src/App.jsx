@@ -7,6 +7,7 @@ import TeamsMatches from "./pages/TeamsMatches";
 import Navbar from "./components/UI/Navbar";
 import "./styles/App.css";
 import Error from "./pages/ErrorPage";
+import FetchingPosts from "./components/FetchingPosts";
 
 function App() {
 
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route path="/matches">
                 <MatchesOfLeague />
+            </Route>
+            <Route path="/fetching">
+                <FetchingPosts />
             </Route>
             <Route path="/list">
                 <TeamsMatches />
