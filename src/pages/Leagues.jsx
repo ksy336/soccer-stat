@@ -1,9 +1,10 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useState} from "react";
 import PostList from "../components/PostList";
-import Input from "../components/MyInput";
 import Select from "../components/UI/Select";
+import Input from "../components/MyInput";
+import "../styles/App.css";
 
-const ListOfLeagues = () => {
+function Leagues() {
     const [posts, usePosts] = useState([
         {id: 1, title: "Competition", body: "Здесь вы увидите список лиг/соревнований по футболу"},
         {id: 2, title: "Teams", body: "Здесь вы увидите список команд"},
@@ -27,8 +28,9 @@ const ListOfLeagues = () => {
     const searchedAndSortedPosts = useMemo(() => {
         return sortedPost.filter(post => post.title.toLowerCase().includes(searchQuery));
     }, [searchQuery, sortedPost]);
+
     return (
-        <div>
+        <div className="App">
             {searchedAndSortedPosts.length
                 ?
                 <PostList posts={searchedAndSortedPosts} />
@@ -37,8 +39,6 @@ const ListOfLeagues = () => {
                     Посты не найдены!
                 </h1>
             }
-
-
             <hr style={{margin: '15px 0'}}/>
             <div>
                 <Input
@@ -56,8 +56,7 @@ const ListOfLeagues = () => {
                     ]}/>
             </div>
         </div>
-
     );
-};
+}
 
-export default ListOfLeagues;
+export default Leagues;

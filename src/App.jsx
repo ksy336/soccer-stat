@@ -1,18 +1,38 @@
 import React, {useMemo, useState} from "react";
-import ListOfLeagues from "./components/ListOfLeagues";
+import  {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import Leagues from "./pages/Leagues";
+import ListOfTeams from "./pages/ListOfTeams";
+import MatchesOfLeague from "./pages/MatchesOfLeague";
+import TeamsMatches from "./pages/TeamsMatches";
+import Navbar from "./components/UI/Navbar";
 import "./styles/App.css";
-import PostList from "./components/PostList";
-import Select from "./components/UI/Select";
-import Input from "./components/MyInput";
+import Error from "./pages/ErrorPage";
 
 function App() {
 
-
   return (
-    <div className="App">
-        
-    </div>
-  )
+    <BrowserRouter>
+        <Navbar />
+        <Switch >
+            <Route path="/leagues">
+                <Leagues />
+            </Route>
+            <Route path="/teams">
+                <ListOfTeams />
+            </Route>
+            <Route path="/matches">
+                <MatchesOfLeague />
+            </Route>
+            <Route path="/list">
+                <TeamsMatches />
+            </Route>
+            <Route path="/error">
+                <Error />
+            </Route>
+            <Redirect to="/error"/>
+        </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;

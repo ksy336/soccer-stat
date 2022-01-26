@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ListOfLeagues = (props) => {
-
+console.log(props);
     return (
         <div className="post-container">
             <div className="post">
