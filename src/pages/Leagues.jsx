@@ -4,6 +4,7 @@ import Select from "../components/UI/Select";
 import Input from "../components/MyInput";
 import "../styles/App.css";
 
+
 function Leagues() {
     const [posts, usePosts] = useState([
         {id: 1, title: "Competition", body: "Здесь вы увидите список лиг/соревнований по футболу"},
@@ -29,6 +30,7 @@ function Leagues() {
         return sortedPost.filter(post => post.title.toLowerCase().includes(searchQuery));
     }, [searchQuery, sortedPost]);
 
+
     return (
         <div className="App">
             {searchedAndSortedPosts.length
@@ -39,6 +41,7 @@ function Leagues() {
                     Посты не найдены!
                 </h1>
             }
+
             <hr style={{margin: '15px 0'}}/>
             <div>
                 <Input

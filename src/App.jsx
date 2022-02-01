@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React from "react";
 import  {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import Leagues from "./pages/Leagues";
 import ListOfTeams from "./pages/ListOfTeams";
@@ -7,7 +7,8 @@ import TeamsMatches from "./pages/TeamsMatches";
 import Navbar from "./components/UI/Navbar";
 import "./styles/App.css";
 import Error from "./pages/ErrorPage";
-import FetchingPosts from "./components/FetchingPosts";
+import FetchingPosts from "./components/FetchingPost";
+
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
         <Navbar />
         <Switch >
             <Route path="/leagues">
-                <Leagues />
+                <FetchingPosts  />
             </Route>
             <Route path="/teams">
                 <ListOfTeams />
@@ -24,9 +25,9 @@ function App() {
             <Route path="/matches">
                 <MatchesOfLeague />
             </Route>
-            <Route path="/fetching">
-                <FetchingPosts />
-            </Route>
+            {/*<Route path="/fetching">*/}
+            {/*    <FetchingPosts  />*/}
+            {/*</Route>*/}
             <Route path="/list">
                 <TeamsMatches />
             </Route>
