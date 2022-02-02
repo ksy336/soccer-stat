@@ -1,6 +1,5 @@
 import React from "react";
 import  {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-import Leagues from "./pages/Leagues";
 import ListOfTeams from "./pages/ListOfTeams";
 import MatchesOfLeague from "./pages/MatchesOfLeague";
 import TeamsMatches from "./pages/TeamsMatches";
