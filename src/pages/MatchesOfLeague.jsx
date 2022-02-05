@@ -7,16 +7,16 @@ const MatchesOfLeague = () => {
     const [matches, setMatches] = useState([]);
     const [filter, setFilter] = useState({sort: "", query: ""})
 
-    const sortedPost = useMemo(() => {
+    const sortedByDataPost = useMemo(() => {
         if (filter.sort) {
             return [...matches].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]));
         }
         return matches;
     }, [filter.sort, matches]);
 
-    const searchedAndSortedPosts = useMemo(() => {
-        return sortedPost.filter(match => match.awayTeam.name.toLowerCase().includes(filter.query.toLowerCase()));
-    }, [filter.query, sortedPost]);
+    const filterData = useMemo(() => {
+        return sortedByDataPost.filter(match => match.awayTeam.name.toLowerCase().includes(filter.query.toLowerCase()));
+    }, [filter.query, sortedByDataPost]);
 
     async function fetchPost(limit = 10, page = 1) {
         try {
@@ -26,17 +26,7 @@ const MatchesOfLeague = () => {
                     _page: page,
                 }
                 });
-
-            const data = await api.getTeamMatches(527 );
-                // {
-                // params: {
-                //     _limit: limit,
-                //     _page: page,
-                // }
-                // });
-            //const teamsData = response.matches[0].awayTeam.name;
             console.log(response.matches);
-            console.log(data);
             setMatches(response.matches);
         } catch (e) {
             console.log(e);
@@ -54,7 +44,7 @@ const MatchesOfLeague = () => {
                     setFilter={setFilter}/>
                 <Matches
                     matches={matches}
-                    matches={searchedAndSortedPosts}
+                    matches={filterData}
                 />
             </div>
         );

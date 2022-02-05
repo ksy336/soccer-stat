@@ -9,7 +9,7 @@ const Leagues = () => {
     const [filter, setFilter] = useState({sort: "", query: ""})
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
-    
+
 
     const sortedPost = useMemo(() => {
         if(filter.sort) {
