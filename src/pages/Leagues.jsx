@@ -1,18 +1,15 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {apiKey} from "../apiKey";
-import Articles from "./Articles";
-import PostList from "./PostList";
-import Input from "./MyInput";
-import Select from "./UI/Select";
-import PostFilter from "./PostFilter";
+import Articles from "../components/Articles";
+import PostFilter from "../components/PostFilter";
+import {api} from "../api";
 
-export const FootballDataAPI = require('footballdata-api-js');
-const api = FootballDataAPI.getAPIWrapper(apiKey);
 
-const FetchingPosts = () => {
+const Leagues = () => {
     const [competitions, setCompetitions] = useState([]);
     const [filter, setFilter] = useState({sort: "", query: ""})
     const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(10);
+    
 
     const sortedPost = useMemo(() => {
         if(filter.sort) {
@@ -25,9 +22,16 @@ const FetchingPosts = () => {
         return sortedPost.filter(competition => competition.name.toLowerCase().includes(filter.query.toLowerCase()));
     }, [filter.query, sortedPost]);
 
-    async function fetchPost() {
+    async function fetchPost(limit, page) {
         try {
-            const response = await api.getCompetitions(); // список лиг, соревнований
+            const response = await api.getCompetitions(
+                {
+               params: {
+                   _limit: limit,
+                   _page: page
+               }
+            })
+
             setCompetitions(response.competitions);
             console.log(response);
 
@@ -37,8 +41,12 @@ const FetchingPosts = () => {
     }
 
     useEffect(() => {
-        fetchPost()
-    }, [])
+        fetchPost(10, 1)
+    }, [page]);
+
+    const getPageCount = (totalPages) => {
+        return Math.ceil(totalPages / limit);
+    }
 
     return (
         <div>
@@ -55,4 +63,4 @@ const FetchingPosts = () => {
     );
 };
 
-export default FetchingPosts;
+export default Leagues;

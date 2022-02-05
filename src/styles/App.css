@@ -40,25 +40,71 @@ body {
     justify-content: center;
 }
 .navbar {
-    height: 50px;
-    width: 100vw;
+    height: 70px;
+    width: 1200px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-around;
     padding: 0 15px;
     background: lightblue;
+    border-bottom: 2px solid #283744;
 }
 .navbar__links {
-    margin-left: 30px;
+    margin-top: 20px;
+    width: 1200px;
+    height: 70px;
 
 }
 .navbar__link {
     margin-right: 70px;
+    margin-top: 20px;
     text-decoration: none;
     color: dimgray;
     font-size: 20px;
     font-family: 'Supermercado One', cursive;
     font-weight: bold;
+}
+.navbar__link:hover {
+    color: #555;
+}
+.navbar__link:active {
+    color: #555;
+
+}
+.navbar__link:after,
+.navbar__link:before {
+    transition: all .5s;
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        width: 100%;
+    }
+    .navbar {
+       width: 100vw;
+        height: auto;
+    }
+    div.navbar__links {
+        width: 100vw;
+        display: block;
+        height: auto;
+        justify-content: center;
+    }
+    .navbar__link {
+        width: 50%;
+        float: left;
+        position: relative;
+    }
+    input {
+        width: 100%;
+    }
+}
+@media only screen and (max-width : 320px) {
+    div.navbar__links {
+        display: block;
+        float: none;
+        width: 100%;
+    }
 }
 
 .table-content {
@@ -76,9 +122,87 @@ body {
     border: 1px solid #888;
 
 }
-
+table {
+   display: flex;
+    font-family: 'Supermercado One', cursive;
+    font-weight: bold;
+    border-radius: 10px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 800px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0 ,0.2);
+}
 tbody {
-    margin-top: 10px;
     font-family: 'Supermercado One', cursive;
     cursor: pointer;
+    display: flex;
+    justify-content: start;
+    margin: 0 auto;
+    border-radius: 10px;
+
+}
+
+.table-td {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    border-bottom: 2px solid lightblue;
+    border-radius: 10px;
+}
+.table-td__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    border-bottom: 2px solid lightblue;
+    border-radius: 10px;
+    margin-bottom: 86px;
+}
+tr {
+    border: 2px solid lightblue;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
+.td-link {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+}
+.td-link:hover {
+    color: #555;
+}
+td {
+    margin: 20px;
+}
+
+.list__leagues {
+  border: none;
+}
+
+th {
+    text-align: center;
+}
+.table-responsive {
+    overflow-x: auto;
+}
+    @media screen and (max-width: 670px) {
+       table {
+            display: flex;
+           flex-direction: column;
+            width: 400px;
+        }
+        .table-td {
+            height: 300px;
+            object-fit: cover;
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+
+@media(max-width: 480px) {
+     td {
+        width: 100%;
+    }
 }

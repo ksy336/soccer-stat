@@ -6,7 +6,7 @@ import TeamsMatches from "./pages/TeamsMatches";
 import Navbar from "./components/UI/Navbar";
 import "./styles/App.css";
 import Error from "./pages/ErrorPage";
-import FetchingPosts from "./components/FetchingPost";
+import Leagues from "./pages/Leagues";
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Navbar />
         <Switch >
             <Route path="/leagues">
-                <FetchingPosts  />
+                <Leagues />
             </Route>
             <Route path="/teams">
                 <ListOfTeams />
@@ -24,9 +24,6 @@ function App() {
             <Route path="/matches">
                 <MatchesOfLeague />
             </Route>
-            {/*<Route path="/fetching">*/}
-            {/*    <FetchingPosts  />*/}
-            {/*</Route>*/}
             <Route path="/list">
                 <TeamsMatches />
             </Route>

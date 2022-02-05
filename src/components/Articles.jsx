@@ -23,25 +23,22 @@ const Articles = ({competitions, page, onChangePage}) => {
     }
     return (
         <div>
-            <table className="table-content">
-                <tbody>
-                    <tr className="table-tr">
-                        <td style={{color: 'brown'}}>Name of League:</td>
-                    </tr>
-                </tbody>
+            <h2 style={{color: 'brown'}}>Name of League:</h2>
+
             {competitions.map(( { name, area }, index) => {
                 return (
-                    <tbody key={index}>
-                        <tr>
-                            <td className="table-td">{name}</td>
-                            <td className="table-td">{area.name}</td>
-                        </tr>
-                    </tbody>
+                    <table className="list__leagues" key={index}>
+                       <tbody>
+                       <tr>
+                           <td>
+                               <a className="td-link" href="">{name}</a>
+                               <p>{area.name}</p>
+                           </td>
+                       </tr>
+                       </tbody>
+                    </table>
                 );
             })}
-
-            </table>
-            <input type="text" value={numberOfPage} onChange={handleChange}/>
         </div>
     );
 };
